@@ -1,4 +1,4 @@
-package com.invex.mx.ms_employee_crud;
+package com.invex.employee.mx;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

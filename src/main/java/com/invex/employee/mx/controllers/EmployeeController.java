@@ -38,7 +38,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long id) {
 
         EmployeeDto employee = employeeService.findById(id);
         if (employee != null) {
@@ -49,7 +49,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<EmployeeDto>> searchEmployeesByName(@RequestParam String name) {
+    public ResponseEntity<List<EmployeeDto>> searchEmployeesByName(@RequestParam("name") String name) {
         List<EmployeeDto> employees = employeeService.findByName(name);
         if (employees.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -66,7 +66,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long id, @RequestBody EmployeeDto employeeDto) {
 
         EmployeeDto updatedEmployee = employeeService.updateEmployee(id, employeeDto);
         if (updatedEmployee != null) {
@@ -77,7 +77,7 @@ public class EmployeeController {
     }   
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
 
         if (employeeService.deleteEmployee(id)) {
             return ResponseEntity.noContent().build();

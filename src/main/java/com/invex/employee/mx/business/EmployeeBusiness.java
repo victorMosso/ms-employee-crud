@@ -126,9 +126,10 @@ public class EmployeeBusiness implements EmployeeService {
             entity.getCreatedAt().format(CREATED_AT_FORMATTER),
             entity.getIsActive()
         );
-        } catch (DateTimeParseException ex) {
-            log.info("Error parsing date '{}', {}", entity.getBirthDate().toString(), ex.getMessage());
-            throw new InvalidDateFormatException(entity.getBirthDate().toString(), ex);
+        } catch (DateTimeParseException | NullPointerException ex) {
+            String birthDateString = entity.getBirthDate() == null ? "null" : entity.getBirthDate().toString();
+            log.info("Error parsing date '{}', {}", birthDateString, ex.getMessage());
+            throw new InvalidDateFormatException(birthDateString, ex);
         }
     }
 
