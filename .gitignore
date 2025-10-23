@@ -24,8 +24,11 @@ hs_err_pid*
 .classpath
 .project
 .settings
+.factorypath
 target
 .DS_Store
 .idea
 .vscode
 *.iml
+.gitattributes
+.mvn
